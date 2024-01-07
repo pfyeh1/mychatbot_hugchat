@@ -20,7 +20,7 @@ with st.sidebar:
             st.success('Proceed to entering your prompt message!')
 
 # store LLM generated responses
-if 'messages' not in st.session_state_keys():
+if 'messages' not in st.session_state.keys():
     st.session_state.messages = [
                                 {"role":"assistant",
                                 "content":"How may I help you?"
