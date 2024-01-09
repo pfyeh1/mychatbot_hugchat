@@ -38,10 +38,14 @@ def generate_response(prompt_input, email, passwd):
     sign = Login(email, passwd)
     cookies = sign.login()
     
+    sign.saveCookies() # save cookies
+    
     # create chat bot
     chatbot = hugchat.ChatBot(cookies = cookies.get_dict())
+    response = chatbot.chat(prompt_input)
+    return response
     
-    return chatbot.chat(prompt_input)
+    #return chatbot.chat(prompt_input)
     
 # accept user prompt
 if prompt := st.chat_input(disabled = not (hf_email and hf_pass)):
